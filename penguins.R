@@ -10,5 +10,5 @@ ggplot(dt_clean, aes(x = body_mass, y = bill_len, color = sex)) +
   geom_smooth(method = lm)
 
 
-m1 <- lm(bill_len ~ body_mass * sex * species, data = dt_clean)
+m1 <- lm(bill_len ~ body_mass + sex + species, data = dt_clean)
 summary(m1)
