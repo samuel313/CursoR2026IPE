@@ -25,3 +25,5 @@ ggplot(dt, aes(bill_len, bill_dep, colour = species)) +
 
 m1 <- lm(bill_dep ~ bill_len * species, data = dt)
 summary(m1)
+
+#without bill_len?
