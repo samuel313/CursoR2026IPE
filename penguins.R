@@ -2,6 +2,9 @@ library(tidyverse)
 
 dt <- penguins
 
-ggplot(dt, aes(x = body_mass, y = bill_len, color = sex)) +
+dt_clean <- dt %>% filter_out(is.na(sex))
+
+ggplot(dt_clean, aes(x = body_mass, y = bill_len, color = sex)) +
   geom_point() +
-  facet_wrap(~ species)
+  facet_wrap(~ species) +
+  geom_smooth(method = lm)
