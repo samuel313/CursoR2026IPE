@@ -1,4 +1,5 @@
 library(tidyverse)
+library(ggplot2)
 
 dt <- penguins
 
@@ -12,3 +13,8 @@ ggplot(dt_clean, aes(x = body_mass, y = bill_len, color = sex)) +
 
 m1 <- lm(bill_len ~ body_mass + sex + species, data = dt_clean)
 summary(m1)
+
+#relación entre el flipper_len y el body_mass
+ggplot(dt, aes(body_mass, flipper_len)) + 
+  geom_point() +
+  facet_wrap(~species)
