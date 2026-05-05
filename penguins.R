@@ -8,3 +8,7 @@ ggplot(dt_clean, aes(x = body_mass, y = bill_len, color = sex)) +
   geom_point() +
   facet_wrap(~ species) +
   geom_smooth(method = lm)
+
+
+m1 <- lm(bill_len ~ body_mass * sex * species, data = dt_clean)
+summary(m1)
