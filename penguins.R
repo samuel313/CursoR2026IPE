@@ -15,6 +15,13 @@ m1 <- lm(bill_len ~ body_mass + sex + species, data = dt_clean)
 summary(m1)
 
 #relación entre el flipper_len y el body_mass
-ggplot(dt, aes(body_mass, flipper_len)) + 
+ggplot(dt, aes(body_mass, flipper_len, colour = sex)) + 
   geom_point() +
   facet_wrap(~species)
+
+#relación de las medidas del pico
+ggplot(dt, aes(bill_len, bill_dep, colour = species)) + 
+  geom_point()
+
+m1 <- lm(bill_dep ~ bill_len * species, data = dt)
+summary(m1)
