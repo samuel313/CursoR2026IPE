@@ -1,0 +1,30 @@
+---
+title: "My report"
+author: "Samuel AG"
+format: typst
+---
+
+# My report on the dataset by Nigro et al.
+
+```{r}
+#| echo: FALSE
+#| message: FALSE
+library(tidyverse)
+library(here)
+```
+
+```{r}
+#| message: FALSE
+dt <- read_csv(here("data/data_clean.csv"))
+```
+
+The general average fruit count is `r mean(dt$count, na.rm = TRUE)`.
+
+```{r}
+#| fig-cap: "Seed count vs. DBH"
+#| warning: FALSE
+ggplot(dt, aes(stem_cm, count, color = seed_maturation_timing)) +
+  geom_point() +
+  scale_y_log10()
+```
+
